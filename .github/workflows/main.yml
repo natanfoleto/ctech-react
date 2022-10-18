@@ -40,6 +40,6 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-          cd /var/ctech/react/ctech-react
+          cd /var/www/ctech-react
           yarn install
           yarn build
