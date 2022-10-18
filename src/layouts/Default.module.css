@@ -1,0 +1,28 @@
+.wrapper {
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow-y: scroll;
+  background: url('../assets/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.wrapper::-webkit-scrollbar-track {
+  background: var(--gray-600);
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--gray-400)
+}
+
+.wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

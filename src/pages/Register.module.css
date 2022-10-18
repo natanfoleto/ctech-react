@@ -1,0 +1,94 @@
+.register {
+  width: 100vw;
+  height: 100vh;
+
+  background: url('../assets/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box {
+  width: 400px auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cover {
+  width: 340px;
+  margin-bottom: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  width: 300px;
+  height: 42px;
+  border: 0;
+  outline: 0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  color: var(--gray-900);
+}
+
+.button {
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border: 0;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--gray-100);
+  background: var(--gray-600);
+
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background: var(--gray-700);
+}
+
+.subscribe {
+  margin-top: 1.25rem;
+  text-decoration: none;
+  color: var(--gray-100);
+  text-align: center;
+  cursor: pointer;
+
+  transition: color 0.2s;
+}
+
+.subscribe:hover {
+  color: var(--white);
+}
+
+@media (max-width: 400px) {
+  .cover { 
+    width: 300px;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 320px) {
+  .cover { 
+    width: 250px; 
+    margin-bottom: 16px;
+  }
+
+  .input {
+    width: 250px;
+    height: 36px;
+  }
+} 
+

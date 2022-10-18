@@ -1,0 +1,61 @@
+.container {
+  width: min(1120px, 100%);
+  height: 100%;
+  padding: 64px 0 0 0;
+}
+
+.info {
+  padding: 2rem;
+  border-radius: 8px;
+  background-image: var(--linear-gradient);
+}
+
+.info h2 {
+  font-size: 1.75rem;
+  color: var(--gray-100);
+}
+
+.info p {
+  line-height: 1.4;
+  color: var(--gray-300);
+  margin-top: 8px;
+}
+
+.device {
+  margin: 2rem 0;
+  padding: 2rem;
+  border-radius: 8px;
+  background-image: var(--linear-gradient);
+}
+
+.device h2 {
+  color: var(--gray-100);
+}
+
+.games {
+  display: grid;
+  gap: 1rem;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(5, 1fr);
+  overflow-x: auto;
+  padding: 1rem 0 0.5rem 0;
+}
+
+.games::-webkit-scrollbar-track {
+  background: var(--gray-900);
+}
+
+.games::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: var(--gray-300);
+}
+
+.games::-webkit-scrollbar {
+  height: 5px;
+}
+
+@media (max-width: 1150px) {
+  .container {
+    padding: 64px 20px 20px;
+  }
+}

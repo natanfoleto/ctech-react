@@ -1,0 +1,48 @@
+.hamburguer, .close {
+  cursor: pointer;
+  margin: 1.5rem 0;
+  display: inline-block;
+}
+
+.hamburguer span, .close span {
+  background: var(--gray-100);
+  height: 2px;
+  width: 14px;
+  display: block;
+  position: relative;
+  transition: all ease 0.1s;
+}
+
+.hamburguer span:after, 
+.hamburguer span:before, 
+.close span:after, 
+.close span:before {
+  background: var(--gray-100);
+  height: 2px;
+  width: 20px;
+  display: block;
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 7px;
+  transition: all ease 0.2s;
+}
+
+.hamburguer span:before, .close span:before  {
+  top: -7px;
+}
+
+/* Open Menu */
+.close span {
+	background: transparent;
+}
+
+.close span:before {
+	transform: rotate(45deg);
+	top: 0;
+}
+
+.close span:after {
+	transform: rotate(-45deg);
+	top: 0;
+}

@@ -1,0 +1,122 @@
+.container {
+  display: flex;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  background-image: linear-gradient(62deg, var(--gray-700) 50%, var(--purple-500) 300%);
+}
+
+.container:hover {
+  box-shadow: 0px 0px 0px 2px var(--blue-300);
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  padding: 2rem;
+}
+
+.left p {
+  color: var(--gray-500);
+  font-size: 0.875rem;
+}
+
+.head {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.cover {
+  width: 124px;
+  height: 124px;
+  border-radius: 4px;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.titles h2 {
+  color: var(--gray-100);
+}
+
+.titles p {
+  color: var(--gray-400);
+  margin-top: 8px;
+}
+
+.right {
+  right: 50%;
+  padding: 2rem;
+}
+
+.info {
+  color: var(--gray-100);
+}
+
+.games {
+  background: var(--gray-600);
+  margin-top: 16px;
+  padding: 20px 30px;
+  border-radius: 6px;
+}
+
+.games ul li {
+  color: var(--gray-300);
+  list-style: none;
+}
+
+.games ul li + li {
+  margin-top: 12px;
+}
+
+.games ul li::before {
+  content: "╺";
+  margin-right: 8px;
+  color: rgb(106, 128, 255);
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left { 
+    width: 100%; 
+    padding: 2rem 2rem 1rem 2rem;
+  }
+
+  .right { 
+    padding: 1rem 2rem 2rem 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .head {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .titles {
+    text-align: center;
+  }
+
+  .left p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 300px) {
+  .left { 
+    padding: 1.5rem;
+  }
+
+  .right { 
+    padding: 1.5rem;
+  }
+}
