@@ -32,7 +32,7 @@ jobs:
         remote_path: ${{ secrets.REMOTE_PATH }}
         args: -o ConnectTimeout=5
 
-    - name: Execute external scripts
+    - name: Remote Build
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
