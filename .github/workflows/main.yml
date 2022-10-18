@@ -22,8 +22,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Install
-      run: yarn --frozen--lockfile
+    # - name: Install
+    #   run: yarn --frozen--lockfile
 
     - name: Build
       run: yarn run build
@@ -37,3 +37,15 @@ jobs:
         local_path: ${{ secrets.LOCAL_PATH }}
         remote_path: ${{ secrets.REMOTE_PATH }}
         args: -o ConnectTimeout=5
+
+    - name: Execute external scripts
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd /var/ctech/react/ctech-react
+          yarn install
+          yarn build
