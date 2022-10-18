@@ -38,6 +38,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
         script: |
           cd /var/ctech/react/ctech-react
           yarn install
