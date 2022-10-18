@@ -22,12 +22,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    # - name: Install
-    #   run: yarn --frozen--lockfile
-
-    - name: Build
-      run: yarn run build
-
     - name: Deploy
       uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
