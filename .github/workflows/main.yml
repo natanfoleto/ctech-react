@@ -29,7 +29,7 @@ jobs:
       run: yarn run build
 
     - name: Deploy
-      uses: wlixcc/SFTP-Deploy-Action@v1.0
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
         server: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
