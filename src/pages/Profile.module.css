@@ -104,10 +104,6 @@
   outline: 1px solid var(--gray-100);
 }
 
-@media (max-width: 1150px) {
-  .container { padding: 0 20px 0; }
-}
-
 @media (max-width: 400px) {
   .password h2 { text-align: center; }
   .passwordForm input { width: 100%; }

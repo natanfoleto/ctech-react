@@ -14,7 +14,7 @@
 
 .content span {
   font-size: 0.875rem;
-  color: var(--gray-300);
+  color: var(--gray-400);
 }
 
 .content aside {
@@ -43,5 +43,10 @@
 }
 
 .up:hover {
-background: var(--gray-800);
+  background: var(--gray-800);
+}
+
+
+@media (max-width: 1150px) {
+  .container { padding: 0 20px 0; }
 }

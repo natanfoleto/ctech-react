@@ -13,7 +13,7 @@ function AuthRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/events" element={<Events />} />
       <Route path="/games" element={<Games />} />
-      <Route path="/profile" element={<Profile />} />
+      <Route path="/me/:username" element={<Profile />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>

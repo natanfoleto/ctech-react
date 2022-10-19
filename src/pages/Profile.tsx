@@ -1,5 +1,5 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import InputMask from "react-input-mask";
 
@@ -13,12 +13,17 @@ import styles from "./Profile.module.css";
 
 function Profile() {
   const navigate = useNavigate();
+  const { username } = useParams();
 
   const { user, updateUserState, signOut } = useAuth();
 
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  useEffect(() => {
+    if (username !== user?.username) navigate(`/me/${user?.username}`);
+  });
 
   async function handleSubmitData(event: FormEvent) {
     event.preventDefault();

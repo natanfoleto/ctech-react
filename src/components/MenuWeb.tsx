@@ -8,7 +8,7 @@ import styles from "./MenuWeb.module.css";
 function MenuWeb() {
   const navigate = useNavigate();
 
-  const { signOut } = useAuth();
+  const { user, signOut } = useAuth();
 
   function handleSignOut() {
     signOut();
@@ -40,7 +40,7 @@ function MenuWeb() {
       </nav>
 
       <aside className={styles.aside}>
-        <NavLink to={"/profile"}>Meu perfil</NavLink>
+        <NavLink to={`/me/${user?.username}`}>Meu perfil</NavLink>
         <button onClick={handleSignOut} className={styles.logout}>
           <SignOut />
           Logout

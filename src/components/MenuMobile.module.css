@@ -14,19 +14,17 @@
 }
 
 .menu a {
-  padding: 0 0.75rem;
   text-decoration: none;
-  color: var(--gray-500);
   transition: color 0.3s;
   cursor: pointer;
 }
 
 .active {
-  border-left: 2px solid var(--yellow-500);
+  color: var(--gray-100);
 }
 
 .inactive {
-  border-left: 2px solid transparent;
+  color: var(--gray-500);
 }
 
 .menu a:hover {

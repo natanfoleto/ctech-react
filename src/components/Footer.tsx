@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <footer className={styles.container}>
       <div className={styles.content}>
-        <span>CTech - Todos os direitos reservados</span>
+        <span>Geek Fest Jaborandi - Todos os direitos reservados</span>
 
         <aside>
           <span>CTech 2022</span>
