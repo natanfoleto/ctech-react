@@ -107,7 +107,7 @@ function Profile() {
 
   return (
     <DefaultLayout>
-      <div className={styles.profile}>
+      <div className={styles.container}>
         <Sidebar />
 
         <main className={styles.main}>

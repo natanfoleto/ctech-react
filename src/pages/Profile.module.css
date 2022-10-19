@@ -1,4 +1,4 @@
-.profile {
+.container {
   width: 1120px;
   margin: 2rem auto;
 
@@ -105,7 +105,7 @@
 }
 
 @media (max-width: 1150px) {
-  .profile { padding: 0 20px 0; }
+  .container { padding: 0 20px 0; }
 }
 
 @media (max-width: 400px) {
@@ -118,7 +118,7 @@
 }
 
 @media (max-width: 768px) {
-  .profile { grid-template-columns: 1fr; }
+  .container { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 310px) {

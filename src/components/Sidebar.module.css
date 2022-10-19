@@ -1,4 +1,4 @@
-.sidebar {
+.container {
   background: var(--gray-800);
   border-radius: 8px;
   overflow: hidden;
@@ -30,13 +30,13 @@
   line-height: 1.6;
 }
 
-.sidebar footer {
+.container footer {
   border-top:  1px solid var(--gray-600);
   margin-top: 1.5rem;
   padding: 1.5rem 2rem 2rem;
 }
 
-.sidebar footer {
+.container footer {
   display: flex;
   flex-direction: column;
   align-items: center;

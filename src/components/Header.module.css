@@ -1,4 +1,4 @@
-.header {
+.container {
   display: flex;
   justify-content: center;
   background: var(--gray-800);

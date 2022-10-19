@@ -23,7 +23,7 @@ function MenuWeb() {
   ];
 
   return (
-    <div className={styles.menuWeb}>
+    <div className={styles.container}>
       <nav className={styles.menu}>
         {navItems.map((navItem, idx) => (
           <NavLink

@@ -1,4 +1,4 @@
-.home {
+.container {
   height: 100%;
   width: 1120px;
   display: flex;
@@ -8,7 +8,7 @@
 }
 
 @media (max-width: 1150px) {
-  .home {
+  .container {
     padding: 64px 20px 20px;
   }
 }

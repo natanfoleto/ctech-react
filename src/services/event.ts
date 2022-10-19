@@ -5,6 +5,8 @@ export interface IEvent {
   name: string;
   notes: string;
   banner_url: string;
+  insignia: number;
+  competition: number;
 }
 
 export interface IFindAllResponse {

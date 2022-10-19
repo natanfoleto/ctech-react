@@ -23,7 +23,7 @@ function Events() {
 
   return (
     <DefaultLayout>
-      <div className={styles.event}>
+      <div className={styles.container}>
         <div className={styles.competitions}>
           <h2>Competições</h2>
 

@@ -10,7 +10,7 @@ import styles from "./Home.module.css";
 function Home() {
   return (
     <DefaultLayout>
-      <div className={styles.home}>
+      <div className={styles.container}>
         <Welcome />
         <Attraction />
         <Championship />

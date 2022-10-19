@@ -32,7 +32,7 @@ function MenuMobile() {
   ];
 
   return (
-    <div className={styles.menuMobile}>
+    <div className={styles.container}>
       <Hamburguer
         menuIsVisible={menuIsVisible}
         handleMenuMobile={handleMenuMobile}

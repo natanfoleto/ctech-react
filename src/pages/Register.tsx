@@ -64,7 +64,7 @@ function Login() {
   }
 
   return (
-    <div className={styles.register}>
+    <div className={styles.container}>
       <main className={styles.box}>
         <img src={logo} className={styles.cover} />
 

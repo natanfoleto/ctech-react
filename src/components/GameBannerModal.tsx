@@ -32,7 +32,7 @@ export function GameBannerModal({
     <div
       id={id}
       onClick={handleOutsideClick}
-      className={isOpen ? styles.container : styles.isClose}
+      className={isOpen ? styles.container : styles.none}
     >
       <div className={styles.content}>
         <X className={styles.close} onClick={onClose} size={24} />

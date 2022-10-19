@@ -1,4 +1,4 @@
-.menuWeb {
+.container {
   width: 1120px;
   display: flex;
   justify-content: space-between;
@@ -71,11 +71,11 @@
 }
 
 @media (max-width: 1150px) {
-  .menuWeb { 
+  .container { 
     padding: 0 1rem;
   }
 }
 
 @media (max-width: 600px) {
-  .menuWeb { display: none; }
+  .container { display: none; }
 }

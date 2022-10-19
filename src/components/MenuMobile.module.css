@@ -1,4 +1,4 @@
-.menuMobile {
+.container {
   display: none;
   width: 1120px;
   padding: 1.075rem;
@@ -73,7 +73,7 @@
 }
 
 @media (max-width: 600px) {
-  .menuMobile { 
+  .container { 
     display: block; 
     height: auto;
   }
