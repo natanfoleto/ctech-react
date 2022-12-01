@@ -3,6 +3,8 @@ import { SignOut } from "phosphor-react";
 
 import { useAuth } from "../contexts/authentication";
 
+import { ITEMS_HEADER } from "../constants/config";
+
 import styles from "./MenuWeb.module.css";
 
 function MenuWeb() {
@@ -16,16 +18,10 @@ function MenuWeb() {
     navigate("/");
   }
 
-  const navItems = [
-    { path: "/", title: "Home" },
-    { path: "/events", title: "Eventos" },
-    { path: "/games", title: "Sala de Jogos" },
-  ];
-
   return (
     <div className={styles.container}>
       <nav className={styles.menu}>
-        {navItems.map((navItem, idx) => (
+        {ITEMS_HEADER.map((navItem, idx) => (
           <NavLink
             key={idx}
             to={navItem.path}

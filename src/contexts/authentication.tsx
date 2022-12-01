@@ -4,7 +4,7 @@ import { signInRequest, ISignInRequest, IUser } from "../services/authenticate";
 
 import api from "../services/api";
 
-import usePersistedState from "../utils/usePersistedState";
+import usePersistedState from "../hooks/usePersistedState";
 
 interface UpdateUserState {
   phone: string;
@@ -18,6 +18,7 @@ interface SignInResponse {
 interface AuthContextType {
   signed: boolean;
   loading: boolean;
+  token: string;
   user: Partial<IUser> | null;
   updateUserState(data: UpdateUserState): void;
   signIn(data: ISignInRequest): Promise<SignInResponse>;
@@ -33,7 +34,7 @@ const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [user, setUser] = usePersistedState<IUser | null>("user", null);
-  const [, setToken] = usePersistedState<string>("token", "");
+  const [token, setToken] = usePersistedState<string>("token", "");
 
   function updateUserState({ phone }: UpdateUserState): void {
     if (user)
@@ -81,6 +82,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       value={{
         signed: !!user,
         loading,
+        token,
         user,
         updateUserState,
         signIn,

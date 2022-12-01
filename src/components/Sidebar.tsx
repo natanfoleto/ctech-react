@@ -24,7 +24,7 @@ export function Sidebar() {
       </div>
 
       <footer>
-        <Phone size={22} color="#04C04D" /> {user?.phone}
+        {user?.phone && <Phone size={22} color="#04C04D" />} {user?.phone}
         {/* <a href="#">
           <PencilLine size={20} />
           Editar seu perfil

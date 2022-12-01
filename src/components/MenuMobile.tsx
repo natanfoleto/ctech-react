@@ -6,6 +6,8 @@ import { useAuth } from "../contexts/authentication";
 
 import Hamburguer from "./Hamburguer";
 
+import { ITEMS_HEADER } from "../constants/config";
+
 import styles from "./MenuMobile.module.css";
 
 function MenuMobile() {
@@ -25,12 +27,6 @@ function MenuMobile() {
     navigate("/");
   }
 
-  const navItems = [
-    { path: "/", title: "Home" },
-    { path: "/events", title: "Eventos" },
-    { path: "/games", title: "Sala de Jogos" },
-  ];
-
   return (
     <div className={styles.container}>
       <Hamburguer
@@ -41,7 +37,7 @@ function MenuMobile() {
       {menuIsVisible ? (
         <>
           <nav className={styles.menu}>
-            {navItems.map((navItem, idx) => (
+            {ITEMS_HEADER.map((navItem, idx) => (
               <NavLink
                 key={idx}
                 to={navItem.path}

@@ -8,6 +8,7 @@ import { updateUser, updatePassword, deleteUser } from "../services/user";
 
 import DefaultLayout from "../layouts/Default";
 import { Sidebar } from "../components/Sidebar";
+import { PermissionGate } from "../components/PermissionGate";
 
 import styles from "./Profile.module.css";
 
@@ -113,7 +114,13 @@ function Profile() {
   return (
     <DefaultLayout>
       <div className={styles.container}>
-        <Sidebar />
+        <aside className={styles.aside}>
+          <Sidebar />
+
+          <PermissionGate permissions={["admin-panel"]}>
+            <button>Painel do Administrador</button>
+          </PermissionGate>
+        </aside>
 
         <main className={styles.main}>
           <div className={styles.password}>
