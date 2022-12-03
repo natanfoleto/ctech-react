@@ -7,7 +7,7 @@ interface GameBannerModalProps {
   onClose: () => void;
   bannerUrl: string | null;
   title: string;
-  free: number;
+  free: string;
   schedules: {
     hour_start: string;
     hour_end: string;
@@ -48,7 +48,7 @@ export function GameBannerModal({
 
         <div className={styles.info}>
           <strong>{title}</strong>
-          <span>{free ? "Livre" : "Torneio"}</span>
+          <span>{free}</span>
           <div className={styles.schedules}>
             <strong>Horários de funcionamento</strong>
 

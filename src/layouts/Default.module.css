@@ -12,6 +12,22 @@
   justify-content: center;
 }
 
+.containerNoResponsive {
+  min-height: calc(100vh - 64px - 76px);
+  display: flex;
+  justify-content: center;
+}
+
+.panel a {
+  position: fixed;
+  bottom: 8px;
+  right: 8px;
+  border-radius: 8px;
+  padding: 0.25rem;
+  background: var(--green-500);
+  cursor: pointer;
+}
+
 
 @media (max-width: 1150px) {
   .container { padding: 0 20px 0; }

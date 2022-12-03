@@ -20,12 +20,12 @@
   gap: 1.25rem;
 }
 
-.aside button {
-  outline: 0;
-  border: 0;
+.aside a {
+  text-align: center;
+  text-decoration: none;
   border-radius: 8px;
   padding: 1rem;
-  color: var(--gray-300);
+  color: var(--gray-500);
   background: var(--gray-700);
   cursor: pointer;
 }

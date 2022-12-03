@@ -4,6 +4,10 @@ export interface IUser {
   id: number;
   name: string;
   username: string;
+  phone: string;
+  group: {
+    name: string;
+  };
   birth_date: string;
   created_at: string;
 }
@@ -51,6 +55,23 @@ export interface IDeleteUserResponse {
   status: string;
   message: string;
 }
+
+export interface IFindAllUsersResponse {
+  status: string;
+  message?: string;
+  data: IUser[];
+}
+
+const findAllUsers = async (): Promise<IFindAllUsersResponse> => {
+  const { data } = await api
+    .get("/user")
+    .then((response) => response)
+    .catch((err) => err.response);
+
+  if (!data) console.log("Houve um erro inesperado.");
+
+  return data;
+};
 
 const createUser = async (
   params: ICreateUserRequest
@@ -110,4 +131,4 @@ const deleteUser = async (
   return data;
 };
 
-export { createUser, updateUser, updatePassword, deleteUser };
+export { findAllUsers, createUser, updateUser, updatePassword, deleteUser };

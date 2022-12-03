@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-import { findAll, IGame } from "../services/games";
+import { findAllGames, IGame } from "../services/game";
 
 import DefaultLayout from "../layouts/Default";
 
@@ -16,14 +16,14 @@ function Events() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    async function findAllEvents() {
-      const { status, message, data } = await findAll();
+    async function findSetAllGames() {
+      const { status, message, data } = await findAllGames();
 
       if (status === "error") toast.error(message);
       if (status === "success") setGames(data);
     }
 
-    findAllEvents();
+    findSetAllGames();
   }, []);
 
   function handleGameBanner() {

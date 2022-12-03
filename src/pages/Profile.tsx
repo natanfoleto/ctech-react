@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import InputMask from "react-input-mask";
 
@@ -118,7 +118,7 @@ function Profile() {
           <Sidebar />
 
           <PermissionGate permissions={["admin-panel"]}>
-            <button>Painel do Administrador</button>
+            <NavLink to={"/panel"}>Painel do Administrador</NavLink>
           </PermissionGate>
         </aside>
 

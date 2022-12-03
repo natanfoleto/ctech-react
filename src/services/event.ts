@@ -5,8 +5,6 @@ export interface IEvent {
   name: string;
   notes: string;
   banner_url: string;
-  insignia: number;
-  competition: number;
 }
 
 export interface IFindAllResponse {
@@ -15,7 +13,7 @@ export interface IFindAllResponse {
   data: IEvent[];
 }
 
-const findAll = async (): Promise<IFindAllResponse> => {
+const findAllEvents = async (): Promise<IFindAllResponse> => {
   const { data } = await api
     .get("/event")
     .then((response) => response)
@@ -26,4 +24,4 @@ const findAll = async (): Promise<IFindAllResponse> => {
   return data;
 };
 
-export { findAll };
+export { findAllEvents };

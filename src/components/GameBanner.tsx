@@ -3,7 +3,7 @@ import styles from "./GameBanner.module.css";
 interface GameBannerProps {
   bannerUrl: string | null;
   title: string;
-  free: number;
+  free: string;
 }
 
 export function GameBanner({ bannerUrl, title, free }: GameBannerProps) {
@@ -20,7 +20,7 @@ export function GameBanner({ bannerUrl, title, free }: GameBannerProps) {
 
       <div className={styles.content}>
         <strong>{title}</strong>
-        <span>{free ? "Livre" : "Torneio"}</span>
+        <span>{free}</span>
       </div>
     </div>
   );

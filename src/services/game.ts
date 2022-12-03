@@ -4,7 +4,7 @@ export interface IGame {
   id: number;
   name: string;
   device: string;
-  free: number;
+  free: string;
   schedules: [
     {
       hour_start: string;
@@ -14,13 +14,13 @@ export interface IGame {
   banner_url: string | null;
 }
 
-export interface IFindAllResponse {
+export interface IFindAllGamesResponse {
   status: string;
   message?: string;
   data: IGame[];
 }
 
-const findAll = async (): Promise<IFindAllResponse> => {
+const findAllGames = async (): Promise<IFindAllGamesResponse> => {
   const { data } = await api
     .get("/game")
     .then((response) => response)
@@ -31,4 +31,4 @@ const findAll = async (): Promise<IFindAllResponse> => {
   return data;
 };
 
-export { findAll };
+export { findAllGames };

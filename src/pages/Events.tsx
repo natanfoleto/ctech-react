@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-import { findAll, IEvent } from "../services/event";
+import { findAllEvents, IEvent } from "../services/event";
 
 import DefaultLayout from "../layouts/Default";
 
@@ -11,14 +11,14 @@ function Events() {
   const [events, setEvents] = useState<IEvent[]>();
 
   useEffect(() => {
-    async function findAllEvents() {
-      const { status, message, data } = await findAll();
+    async function findSetAllEvents() {
+      const { status, message, data } = await findAllEvents();
 
       if (status === "error") toast.error(message);
       if (status === "success") setEvents(data);
     }
 
-    findAllEvents();
+    findSetAllEvents();
   }, []);
 
   return (
