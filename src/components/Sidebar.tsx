@@ -19,8 +19,8 @@ export function Sidebar() {
       <div className={styles.profile}>
         <Avatar src="https://i.pinimg.com/474x/8f/e6/66/8fe66626ec212bb54e13fa94e84c105c.jpg" />
 
-        <strong>Natan Foleto</strong>
-        <span>natanfoleto</span>
+        <strong>{user?.name}</strong>
+        <span>{user?.username}</span>
       </div>
 
       <footer>

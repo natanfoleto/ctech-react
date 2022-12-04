@@ -3,10 +3,10 @@ import styles from "./GameBanner.module.css";
 interface GameBannerProps {
   bannerUrl: string | null;
   title: string;
-  free: string;
+  modality: string;
 }
 
-export function GameBanner({ bannerUrl, title, free }: GameBannerProps) {
+export function GameBanner({ bannerUrl, title, modality }: GameBannerProps) {
   return (
     <div className={styles.container}>
       <img
@@ -20,7 +20,7 @@ export function GameBanner({ bannerUrl, title, free }: GameBannerProps) {
 
       <div className={styles.content}>
         <strong>{title}</strong>
-        <span>{free}</span>
+        <span>{modality}</span>
       </div>
     </div>
   );

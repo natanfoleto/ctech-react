@@ -7,6 +7,7 @@ import { useAuth } from "../contexts/authentication";
 import { updateUser, updatePassword, deleteUser } from "../services/user";
 
 import DefaultLayout from "../layouts/Default";
+
 import { Sidebar } from "../components/Sidebar";
 import { PermissionGate } from "../components/PermissionGate";
 
@@ -18,7 +19,8 @@ function Profile() {
 
   const { user, updateUserState, signOut } = useAuth();
 
-  const [phone, setPhone] = useState("");
+  const [name, setName] = useState(user?.name || "");
+  const [phone, setPhone] = useState(user?.phone || "");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -34,6 +36,7 @@ function Profile() {
 
       const { status, message } = await updateUser({
         id,
+        name,
         phone,
       });
 
@@ -41,8 +44,7 @@ function Profile() {
       if (status === "success") {
         toast.success(message);
 
-        setPhone("");
-        updateUserState({ phone });
+        updateUserState({ name, phone });
       }
     }
   }
@@ -96,6 +98,11 @@ function Profile() {
     navigate("/");
   }
 
+  function handleNameChange(event: ChangeEvent<HTMLInputElement>) {
+    event.target.setCustomValidity("");
+    setName(event.target.value);
+  }
+
   function handlePhoneChange(event: ChangeEvent<HTMLInputElement>) {
     event.target.setCustomValidity("");
     setPhone(event.target.value);
@@ -127,6 +134,16 @@ function Profile() {
             <h2>Alterar seu perfil</h2>
 
             <form onSubmit={handleSubmitData} className={styles.passwordForm}>
+              <input
+                name="name"
+                type="text"
+                value={name}
+                onChange={handleNameChange}
+                className={styles.input}
+                placeholder="Digite o nome completo"
+                required
+              />
+
               <InputMask
                 mask="(99) 99999-9999"
                 name="phone"
@@ -138,7 +155,10 @@ function Profile() {
                 required
               />
 
-              <button type="submit" disabled={!phone}>
+              <button
+                type="submit"
+                disabled={name === user?.name && phone === user?.phone}
+              >
                 Confirmar
               </button>
             </form>

@@ -28,6 +28,7 @@ export interface ICreateUserResponse {
 
 export interface IUpdateUserRequest {
   id: number;
+  name: string;
   phone: string;
 }
 

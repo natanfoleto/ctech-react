@@ -1,1 +1,223 @@
+/** Estilos globais do componente Tab **/
+.buttons {
+  display: flex;
+  gap: 4px;
+}
 
+.buttons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 0;
+  border: 1px solid transparent;
+  padding: 0 0.5rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--gray-200);
+  background: var(--purple-300);
+}
+
+.buttons button:hover {
+  border: 1px solid var(--purple-300);
+  color: var(--purple-300);
+  background: var(--white);
+  transition: background 0.1s;
+}
+
+.buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.actionTable {
+  display: flex;
+  gap: 4px;
+  min-width: 8rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form label{
+  margin: 0 0 4px 4px;
+  font-size: 14px;
+  color: var(--gray-500);
+}
+
+.input {
+  width: 100%;
+  height: 42px;
+  border: 1px solid var(--gray-300);
+  outline: 0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  color: var(--gray-900);
+}
+
+.select {
+  width: 100%;
+  height: 42px;
+  border: 1px solid var(--gray-300);
+  outline: 0;
+  border-radius: 8px;
+  padding: 0 0.75rem;
+  margin-bottom: 0.75rem;
+  color: var(--gray-900);
+}
+
+.subimitDialog {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.subimitDialog button {
+  display: flex;
+  gap: 4px;
+  outline: 0;
+  border: 0;
+
+  padding: 0.75rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--purple-300);
+  background: var(--white);
+}
+
+.subimitDialog button:hover {
+  color: var(--white);
+  background: var(--purple-300);
+  transition: background 0.5s;
+}
+
+.subimitDialog button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/** Estilos do componente TabEvent, TabGame **/
+.draggable {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.cover {
+  max-width: 400px;
+  max-height: 500px;
+  padding: 1rem;
+  border-radius: 4px;
+  background: var(--gray-900);
+}
+
+.cover img {
+  width: 100%;
+  border-radius: 4px;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.bannerPreview {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--gray-300);
+}
+
+.bannerPreview p {
+  color: var(--gray-500);
+  font-size: 14px;
+}
+
+.bannerPreview img {
+  width: 250px;
+  max-height: 350px;
+  margin-top: 0.75rem;
+  border-radius: 4px;
+}
+
+/** Estilos do componente TabGame **/
+.formSchedules {
+  display: flex;
+  gap: 4px;
+}
+
+.formSchedules input {
+  width: 50%;
+}
+
+.formSchedules button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 0;
+  height: 42px;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 0;
+  color: var(--gray-100);
+  background: var(--purple-300);
+  cursor: pointer;
+}
+
+.formSchedules button:hover {
+  background: var(--purple-500);
+  transition: background 0.5s;
+}
+
+.schedules {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.schedule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.schedule span {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3.5rem;
+  height: 42px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-300);
+}
+
+.schedules button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 0;
+  height: 42px;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 0;
+  color: var(--gray-100);
+  background: var(--red-300);
+  cursor: pointer;
+}
+
+.schedules button:hover {
+  background: var(--red-500);
+  transition: background 0.5s;
+}

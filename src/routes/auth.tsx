@@ -6,6 +6,7 @@ import Games from "../pages/Games";
 import Profile from "../pages/Profile";
 import Panel from "../pages/Panel";
 
+import Unauthorized from "../pages/Unauthorized";
 import NotFound from "../pages/NotFound";
 
 function AuthRoutes() {
@@ -17,6 +18,7 @@ function AuthRoutes() {
       <Route path="/me/:username" element={<Profile />} />
       <Route path="/panel" element={<Panel />} />
 
+      <Route path="/unauthorized" element={<Unauthorized />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

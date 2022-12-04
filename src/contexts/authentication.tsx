@@ -7,6 +7,7 @@ import api from "../services/api";
 import usePersistedState from "../hooks/usePersistedState";
 
 interface UpdateUserState {
+  name: string;
   phone: string;
 }
 
@@ -36,10 +37,11 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = usePersistedState<IUser | null>("user", null);
   const [token, setToken] = usePersistedState<string>("token", "");
 
-  function updateUserState({ phone }: UpdateUserState): void {
+  function updateUserState({ name, phone }: UpdateUserState): void {
     if (user)
       setUser({
         ...user,
+        name,
         phone,
       });
   }

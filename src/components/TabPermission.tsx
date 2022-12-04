@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
+import { Plus, PencilLine, Trash } from "phosphor-react";
+
 import { DataTable } from "primereact/datatable";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
@@ -45,13 +47,6 @@ export function TabPermission() {
     findSetAllPermissions();
   }, []);
 
-  const paginatorLeft = (
-    <Button type="button" icon="pi pi-refresh" className="p-button-text" />
-  );
-  const paginatorRight = (
-    <Button type="button" icon="pi pi-cloud" className="p-button-text" />
-  );
-
   const onGlobalFilterChange = (e: any) => {
     const value = e.target.value;
     let _filters = { ...filters };
@@ -64,6 +59,7 @@ export function TabPermission() {
 
   const clearFilter = () => {
     initFilters();
+    setSelectedCustomer(null);
   };
 
   const initFilters = () => {
@@ -90,25 +86,41 @@ export function TabPermission() {
     setGlobalFilterValue("");
   };
 
+  const customer = selectedCustomer ? false : true;
+
   const renderHeader = () => {
     return (
       <div className="flex justify-content-between">
-        <Button
-          type="button"
-          icon="pi pi-filter-slash"
-          label="Clear"
-          className="p-button-outlined"
-          onClick={clearFilter}
-        />
+        <div className={styles.buttons}>
+          <button>
+            <Plus size={22} weight="bold" />
+          </button>
+          <button disabled={customer}>
+            <PencilLine size={22} weight="fill" />
+          </button>
+          <button disabled={customer}>
+            <Trash size={22} weight="fill" />
+          </button>
+        </div>
 
-        <span className="p-input-icon-left">
-          <i className="pi pi-search" />
-          <InputText
-            value={globalFilterValue}
-            onChange={onGlobalFilterChange}
-            placeholder="Buscar"
+        <div className="flex gap-1">
+          <Button
+            type="button"
+            icon="pi pi-filter-slash"
+            label="Clear"
+            className="p-button-outlined"
+            onClick={clearFilter}
           />
-        </span>
+
+          <span className="p-input-icon-left">
+            <i className="pi pi-search" />
+            <InputText
+              value={globalFilterValue}
+              onChange={onGlobalFilterChange}
+              placeholder="Buscar"
+            />
+          </span>
+        </div>
       </div>
     );
   };
@@ -133,8 +145,6 @@ export function TabPermission() {
         responsiveLayout="scroll"
         paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
-        paginatorLeft={paginatorLeft}
-        paginatorRight={paginatorRight}
         resizableColumns
         columnResizeMode="fit"
         showGridlines

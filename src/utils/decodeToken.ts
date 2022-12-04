@@ -24,8 +24,6 @@ const decodeToken = (): TokenProps => {
 
   const tokenDecoded = jwtDecode(token);
 
-  console.log(tokenDecoded);
-
   return tokenDecoded as TokenProps;
 };
 

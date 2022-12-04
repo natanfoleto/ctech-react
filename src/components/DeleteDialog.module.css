@@ -1,0 +1,29 @@
+.deleteUserFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.deleteUserFooter button {
+  display: flex;
+  gap: 4px;
+  outline: 0;
+  border: 0;
+  width: 100px;
+  padding: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--purple-300);
+  background: var(--white);
+}
+
+.deleteUserFooter button:hover {
+  color: var(--white);
+  background: var(--purple-300);
+  transition: background 0.5s;
+}
+
+.deleteUserFooter button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

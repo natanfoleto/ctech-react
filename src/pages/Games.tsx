@@ -59,7 +59,7 @@ function Events() {
                     <GameBanner
                       bannerUrl={game.banner_url}
                       title={game.name}
-                      free={game.free}
+                      modality={game.modality}
                     />
                   </div>
                 );
@@ -84,7 +84,7 @@ function Events() {
                     <GameBanner
                       bannerUrl={game.banner_url}
                       title={game.name}
-                      free={game.free}
+                      modality={game.modality}
                     />
                   </div>
                 );
@@ -109,7 +109,7 @@ function Events() {
                     <GameBanner
                       bannerUrl={game.banner_url}
                       title={game.name}
-                      free={game.free}
+                      modality={game.modality}
                     />
                   </div>
                 );
@@ -134,7 +134,7 @@ function Events() {
                     <GameBanner
                       bannerUrl={game.banner_url}
                       title={game.name}
-                      free={game.free}
+                      modality={game.modality}
                     />
                   </div>
                 );
@@ -150,7 +150,7 @@ function Events() {
             onClose={handleGameBanner}
             bannerUrl={game.banner_url}
             title={game.name}
-            free={game.free}
+            modality={game.modality}
             schedules={game.schedules}
           />
         </div>
