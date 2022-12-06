@@ -1,5 +1,4 @@
 import api from "./api";
-
 export interface ISignInRequest {
   username: string;
   password: string;
@@ -7,6 +6,7 @@ export interface ISignInRequest {
 
 export interface IUser {
   id: number;
+  id_group: number;
   username: string;
   name: string;
   birthDate: string;

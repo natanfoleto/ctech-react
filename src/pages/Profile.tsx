@@ -31,13 +31,14 @@ function Profile() {
   async function handleSubmitData(event: FormEvent) {
     event.preventDefault();
 
-    if (user?.id) {
+    if (user?.id && user?.id_group) {
       const { id } = user;
 
       const { status, message } = await updateUser({
         id,
         name,
         phone,
+        groupId: user.id_group,
       });
 
       if (status === "error") toast.error(message);

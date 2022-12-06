@@ -365,7 +365,6 @@ export function TabGame() {
         currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords}"
         resizableColumns
         columnResizeMode="fit"
-        showGridlines
         emptyMessage="Nenhum jogo encontrado."
       >
         <Column

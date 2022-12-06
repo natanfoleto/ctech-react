@@ -1,7 +1,9 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { Plus, PencilLine, Trash } from "phosphor-react";
+import { Plus, Minus, PencilLine, Trash, Lightning } from "phosphor-react";
+
+import { useGlobal } from "../contexts/global";
 
 import {
   DataTable,
@@ -23,12 +25,29 @@ import {
   deleteGroup,
 } from "../services/group";
 
+import { findAllPermissions, IPermission } from "../services/permission";
+import {
+  findGroupPermissions,
+  IGroupPermission,
+  updateGroupPermission,
+} from "../services/groupPermission";
+
 import styles from "./Tab.module.css";
 
 export function TabGroup() {
+  const { global } = useGlobal();
+
   const [name, setName] = useState("");
   const [groups, setGroups] = useState<IGroup[]>();
   const [selectedGroup, setSelectedGroup] = useState<IGroup | null>(null);
+  const [permissions, setPermissions] = useState<IPermission[]>([]); // * Todas permissões
+  const [groupPermissions, setGroupPermissions] = useState<IGroupPermission[]>(
+    []
+  ); // * Permissões atuais do grupo
+  const [permissionId, setPermissionId] = useState(0); // * ID da permissão selecionada no <select/>
+  const [permissionName, setPermissionName] = useState(""); // * Nome da permissão selecionada no <select/>
+  const [permissionLore, setPermissionLore] = useState(""); // * Lore da permissão selecionada no <select/>
+  const [permissionType, setPermissionType] = useState(""); // * Type da permissão selecionada no <select/>
 
   const [lastLoadTime, setLastLoadTime] = useState(new Date());
   const [groupDialog, setGroupDialog] = useState(false);
@@ -51,8 +70,16 @@ export function TabGroup() {
       if (status === "success") setGroups(data);
     }
 
+    async function findSetAllPermissions() {
+      const { status, message, data } = await findAllPermissions();
+
+      if (status === "error") toast.error(message);
+      if (status === "success") setPermissions(data);
+    }
+
     findSetAllGroups();
-  }, [lastLoadTime]);
+    findSetAllPermissions();
+  }, [lastLoadTime, global]);
 
   function add() {
     clearForm();
@@ -62,6 +89,19 @@ export function TabGroup() {
 
   function edit() {
     setGroupDialog(true);
+
+    async function findSetGroupPermissions() {
+      if (selectedGroup) {
+        const { id } = selectedGroup;
+
+        const { status, message, data } = await findGroupPermissions({ id });
+
+        if (status === "error") toast.error(message);
+        if (status === "success") setGroupPermissions(data);
+      }
+    }
+
+    findSetGroupPermissions();
   }
 
   function del() {
@@ -87,10 +127,21 @@ export function TabGroup() {
     const id = selectedGroup?.id;
 
     if (id) {
+      const ids = groupPermissions.map((permission) => {
+        return permission.id;
+      });
+
       const { status, message } = await updateGroup({ id, name });
+
+      const res = await updateGroupPermission({
+        id,
+        permissions: ids,
+      });
 
       if (status === "success") toast.success(message);
       if (status === "error") toast.error(message);
+
+      if (res.status === "error") toast.error(res.message);
 
       hideDialog();
       setLastLoadTime(new Date());
@@ -117,14 +168,60 @@ export function TabGroup() {
     setName(event.target.value);
   }
 
+  function handlePermissionChange(event: ChangeEvent<HTMLSelectElement>) {
+    const id = Number(event.target.value);
+
+    event.target.setCustomValidity("");
+    setPermissionId(id);
+
+    permissions?.forEach((permission) => {
+      if (id === permission.id) {
+        setPermissionName(permission.name);
+        setPermissionLore(permission.lore);
+        setPermissionType(permission.type);
+      }
+    });
+  }
+
+  function addGroupPermission() {
+    const permissionFound = groupPermissions.filter(
+      (item) => item.id === permissionId
+    );
+
+    if (permissionFound.length > 0) {
+      toast.error("Essa permissão já esta na lista.");
+      return;
+    }
+
+    setGroupPermissions([
+      ...groupPermissions,
+      {
+        id: permissionId,
+        name: permissionName,
+        lore: permissionLore,
+        type: permissionType,
+      },
+    ]);
+  }
+
+  function removeGroupPermission(id: number) {
+    setGroupPermissions((groupPermission) =>
+      groupPermission.filter((permission) => permission.id !== id)
+    );
+  }
+
   function selectGroup(e: DataTableSelectionChangeParams) {
     const { value } = e;
 
     setSelectedGroup(value);
     setName(value.name);
+    setPermissionId(permissions[0].id);
+    setPermissionName(permissions[0].name);
+    setPermissionLore(permissions[0].lore);
+    setPermissionType(permissions[0].type);
   }
 
-  function unselectEvent() {
+  function unselectGroup() {
     if (selectedGroup) clearState();
   }
 
@@ -236,7 +333,7 @@ export function TabGroup() {
         globalFilterFields={["id", "name"]}
         selection={selectedGroup}
         onSelectionChange={(e) => selectGroup(e)}
-        onRowClick={unselectEvent}
+        onRowClick={unselectGroup}
         selectionMode="single"
         paginator
         rows={15}
@@ -248,7 +345,6 @@ export function TabGroup() {
         paginatorRight={paginatorRight}
         resizableColumns
         columnResizeMode="fit"
-        showGridlines
         emptyMessage="Nenhum grupo encontrado."
       >
         <Column
@@ -269,7 +365,7 @@ export function TabGroup() {
 
       <Dialog
         visible={groupDialog}
-        style={{ minWidth: "450px" }}
+        style={{ minWidth: "500px" }}
         header={selectedGroup ? "Editando Grupo" : "Novo Grupo"}
         modal
         onHide={hideDialog}
@@ -287,6 +383,64 @@ export function TabGroup() {
             placeholder="Nome do grupo"
             required
           />
+
+          {selectedGroup ? (
+            <>
+              <label htmlFor="permission">Adicionar uma permissão</label>
+              <div className={styles.permissionSelect}>
+                <select
+                  name="permission"
+                  value={permissionId}
+                  onChange={handlePermissionChange}
+                  className={styles.select}
+                  required
+                >
+                  {permissions?.map((permission) => (
+                    <option key={permission.id} value={permission.id}>
+                      {permission.name}
+                    </option>
+                  ))}
+                </select>
+                <button type="button" onClick={addGroupPermission}>
+                  <Plus size={16} weight="bold" />
+                </button>
+              </div>
+
+              <div className={styles.permissionSelected}>
+                <Lightning size={30} weight="fill" />
+                <div className={styles.permissionInfo}>
+                  <p>Poderes da permissão {permissionName}</p>
+                  <span>
+                    {permissionLore} [{permissionType}]
+                  </span>
+                </div>
+              </div>
+
+              {groupPermissions.length > 0 ? (
+                <div className={styles.permissions}>
+                  <div className={styles.permissionsHeader}>
+                    <p>Detalhes</p>
+                    <p>Deletar</p>
+                  </div>
+
+                  {groupPermissions?.map((permission) => (
+                    <div className={styles.permissionsBody} key={permission.id}>
+                      <p>
+                        <strong>{permission.name}</strong>: {permission.lore}
+                      </p>
+
+                      <button
+                        type="button"
+                        onClick={() => removeGroupPermission(permission.id)}
+                      >
+                        <Minus size={12} weight="bold" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+            </>
+          ) : null}
 
           <div className={styles.subimitDialog}>
             <button type="button" onClick={hideDialog}>

@@ -41,9 +41,9 @@
   flex-direction: column;
 }
 
-.form label{
+.form label {
   margin: 0 0 4px 4px;
-  font-size: 14px;
+  font-size: 0.85rem;
   color: var(--gray-500);
 }
 
@@ -101,6 +101,101 @@
   cursor: not-allowed;
 }
 
+/** Estilos do componente TabGroup **/
+.permissionSelect {
+  display: flex;
+  gap: 4px;
+}
+
+.permissionSelect button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 0;
+  height: 42px;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 0;
+  color: var(--gray-100);
+  background: var(--purple-300);
+  cursor: pointer;
+}
+
+.permissionSelect button:hover {
+  background: var(--purple-500);
+  transition: background 0.5s;
+}
+
+.permissionSelected {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.permissionInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.permissionInfo p {
+  font-size: 0.85rem;
+  color: var(--red-500);
+}
+
+.permissionInfo span {
+  font-size: 0.85rem;
+}
+
+.permissions {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 1.5rem;
+}
+
+.permissions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 0;
+  padding: 6px;
+  border-radius: 2px;
+  border: 0;
+  color: var(--gray-100);
+  background: var(--red-300);
+  cursor: pointer;
+}
+
+.permissions button:hover {
+  background: var(--red-500);
+  transition: background 0.5s;
+}
+
+.permissionsHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.permissionsHeader p {
+  font-size: 0.85rem;
+}
+
+.permissionsBody {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.permissionsBody p {
+  width: 100%;
+  padding: 3px;
+  border-radius: 2px;
+  background: rgb(240, 240, 240);
+}
+
 /** Estilos do componente TabEvent, TabGame **/
 .draggable {
   position: absolute;
@@ -139,7 +234,7 @@
 
 .bannerPreview p {
   color: var(--gray-500);
-  font-size: 14px;
+  font-size: 0.85rem;
 }
 
 .bannerPreview img {

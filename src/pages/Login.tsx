@@ -55,6 +55,7 @@ function Login() {
           />
 
           <input
+            id="last"
             name="password"
             type="password"
             pattern="[0-9]*"
@@ -67,6 +68,7 @@ function Login() {
             placeholder="Sua senha secreta"
             required
             onKeyPress={(e) => {
+              if (e.key === "Enter") return;
               if (!/[0-9]/.test(e.key)) e.preventDefault();
             }}
           />

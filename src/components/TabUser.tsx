@@ -23,6 +23,8 @@ import {
   deleteUser,
 } from "../services/user";
 
+import { findAllGroups, IGroup } from "../services/group";
+
 import styles from "./Tab.module.css";
 
 export function TabUser() {
@@ -33,6 +35,8 @@ export function TabUser() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [users, setUsers] = useState<IUser[]>();
   const [selectedUser, setSelectedUser] = useState<IUser | null>(null);
+  const [group, setGroup] = useState(0);
+  const [groups, setGroups] = useState<IGroup[]>();
 
   const [lastLoadTime, setLastLoadTime] = useState(new Date());
   const [userDialog, setUserDialog] = useState(false);
@@ -71,7 +75,15 @@ export function TabUser() {
       if (status === "success") setUsers(data);
     }
 
+    async function findSetAllGroups() {
+      const { status, message, data } = await findAllGroups();
+
+      if (status === "error") toast.error(message);
+      if (status === "success") setGroups(data);
+    }
+
     findSetAllUsers();
+    findSetAllGroups();
   }, [lastLoadTime]);
 
   function add() {
@@ -122,6 +134,7 @@ export function TabUser() {
         id,
         name,
         phone: selectedUser.phone,
+        groupId: group,
       });
 
       if (status === "error") toast.error(message);
@@ -175,6 +188,11 @@ export function TabUser() {
     setConfirmPassword(event.target.value);
   }
 
+  function handleGroupChange(event: ChangeEvent<HTMLSelectElement>) {
+    event.target.setCustomValidity("");
+    setGroup(Number(event.target.value));
+  }
+
   function selectUser(e: DataTableSelectionChangeParams) {
     const { value } = e;
 
@@ -182,9 +200,10 @@ export function TabUser() {
     setUsername(value.username);
     setName(value.name);
     setBirthDate(value.birth_date);
+    setGroup(value.id_group);
   }
 
-  function unselectEvent() {
+  function unselectUser() {
     if (selectedUser) clearState();
   }
 
@@ -194,6 +213,7 @@ export function TabUser() {
     setBirthDate("");
     setPassword("");
     setConfirmPassword("");
+    setGroup(0);
   }
 
   function clearState() {
@@ -328,7 +348,7 @@ export function TabUser() {
         globalFilterFields={["id", "name", "username", "group.name", "phone"]}
         selection={selectedUser}
         onSelectionChange={(e) => selectUser(e)}
-        onRowClick={unselectEvent}
+        onRowClick={unselectUser}
         selectionMode="single"
         paginator
         rows={15}
@@ -418,6 +438,25 @@ export function TabUser() {
             placeholder="Nome completo"
             required
           />
+
+          {selectedUser ? (
+            <>
+              <label htmlFor="group">Selecione o grupo</label>
+              <select
+                name="group"
+                value={group}
+                onChange={handleGroupChange}
+                className={styles.select}
+                required
+              >
+                {groups?.map((group) => (
+                  <option key={group.id} value={group.id}>
+                    {group.name}
+                  </option>
+                ))}
+              </select>
+            </>
+          ) : null}
 
           {!selectedUser ? (
             <input

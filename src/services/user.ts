@@ -5,6 +5,7 @@ export interface IUser {
   name: string;
   username: string;
   phone: string;
+  id_group: number;
   group: {
     name: string;
   };
@@ -30,6 +31,7 @@ export interface IUpdateUserRequest {
   id: number;
   name: string;
   phone: string;
+  groupId: number;
 }
 
 export interface IUpdateUserResponse {

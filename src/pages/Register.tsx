@@ -113,6 +113,7 @@ function Login() {
             placeholder="Sua senha secreta"
             required
             onKeyPress={(e) => {
+              if (e.key === "Enter") return;
               if (!/[0-9]/.test(e.key)) e.preventDefault();
             }}
           />
@@ -130,6 +131,7 @@ function Login() {
             placeholder="Confirme a senha"
             required
             onKeyPress={(e) => {
+              if (e.key === "Enter") return;
               if (!/[0-9]/.test(e.key)) e.preventDefault();
             }}
           />
