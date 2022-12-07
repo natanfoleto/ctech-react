@@ -37,7 +37,3 @@
   background: var(--white);
   color: var(--gray-300);
 }
-
-.off {
-  display: none;
-}
