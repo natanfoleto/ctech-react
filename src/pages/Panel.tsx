@@ -9,8 +9,23 @@ import { TabPermission } from "../components/TabPermission";
 import { PermissionGate } from "../components/PermissionGate";
 
 import styles from "./Panel.module.css";
+import { useState } from "react";
+
+enum Pages {
+  TabUser,
+  TabGroup,
+  TabEvent,
+  TabGame,
+  TabPermission,
+}
 
 function Panel() {
+  const [currentTab, setCurrentTab] = useState<Pages>(Pages.TabUser);
+
+  function handleSetTab(tab: number) {
+    setCurrentTab(tab);
+  }
+
   return (
     <DefaultLayout noResponsiveContent buttonPanel={false}>
       <PermissionGate permissions={["admin-panel"]} isPage>
@@ -23,12 +38,14 @@ function Panel() {
               "Sala de Jogos",
               "Permissões",
             ]}
+            onClick={handleSetTab}
+            currentTab={currentTab}
           >
-            <TabUser />
-            <TabGroup />
-            <TabEvent />
-            <TabGame />
-            <TabPermission />
+            {currentTab === Pages.TabUser && <TabUser />}
+            {currentTab === Pages.TabGroup && <TabGroup />}
+            {currentTab === Pages.TabEvent && <TabEvent />}
+            {currentTab === Pages.TabGame && <TabGame />}
+            {currentTab === Pages.TabPermission && <TabPermission />}
           </Tabs>
         </div>
       </PermissionGate>

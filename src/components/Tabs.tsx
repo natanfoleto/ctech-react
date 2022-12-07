@@ -1,15 +1,15 @@
-import React, { useState, Children } from "react";
+import React from "react";
 
 import styles from "./Tabs.module.css";
 
 interface TabsProps {
   buttons: string[];
+  onClick: (tab: number) => void;
+  currentTab: number;
   children: React.ReactNode;
 }
 
-export function Tabs({ buttons, children }: TabsProps) {
-  const [activeIndex, setActiveIndex] = useState(0);
-
+export function Tabs({ buttons, onClick, currentTab, children }: TabsProps) {
   return (
     <div className={styles.container}>
       <div className={styles.nav}>
@@ -17,11 +17,9 @@ export function Tabs({ buttons, children }: TabsProps) {
           return (
             <button
               key={text}
-              className={
-                activeIndex === i ? styles.buttonActive : styles.button
-              }
+              className={currentTab === i ? styles.buttonActive : styles.button}
               onClick={() => {
-                setActiveIndex(i);
+                onClick(i);
               }}
             >
               {text.toUpperCase()}
@@ -30,15 +28,7 @@ export function Tabs({ buttons, children }: TabsProps) {
         })}
       </div>
 
-      <div className={styles.content}>
-        {Children.map(children, (c, i) => {
-          return (
-            <div key={i} className={activeIndex === i ? undefined : styles.off}>
-              {c}
-            </div>
-          );
-        })}
-      </div>
+      <div className={styles.content}>{children}</div>
     </div>
   );
 }

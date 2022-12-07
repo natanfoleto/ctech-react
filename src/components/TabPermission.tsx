@@ -3,8 +3,6 @@ import { toast } from "react-toastify";
 
 import { Plus, PencilLine, Trash } from "phosphor-react";
 
-import { useGlobal } from "../contexts/global";
-
 import {
   DataTable,
   DataTableSelectionChangeParams,
@@ -28,8 +26,6 @@ import {
 import styles from "./Tab.module.css";
 
 export function TabPermission() {
-  const { global, setGlobal } = useGlobal();
-
   const [name, setName] = useState("");
   const [lore, setLore] = useState("");
   const [type, setType] = useState("");
@@ -90,7 +86,6 @@ export function TabPermission() {
     const { status, message } = await createPermission({ name, lore, type });
 
     if (status === "success") {
-      setGlobal(!global);
       toast.success(message);
     }
     if (status === "error") toast.error(message);

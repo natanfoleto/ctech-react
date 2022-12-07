@@ -3,8 +3,6 @@ import { toast } from "react-toastify";
 
 import { Plus, Minus, PencilLine, Trash, Lightning } from "phosphor-react";
 
-import { useGlobal } from "../contexts/global";
-
 import {
   DataTable,
   DataTableSelectionChangeParams,
@@ -35,8 +33,6 @@ import {
 import styles from "./Tab.module.css";
 
 export function TabGroup() {
-  const { global } = useGlobal();
-
   const [name, setName] = useState("");
   const [groups, setGroups] = useState<IGroup[]>();
   const [selectedGroup, setSelectedGroup] = useState<IGroup | null>(null);
@@ -79,7 +75,7 @@ export function TabGroup() {
 
     findSetAllGroups();
     findSetAllPermissions();
-  }, [lastLoadTime, global]);
+  }, [lastLoadTime]);
 
   function add() {
     clearForm();
