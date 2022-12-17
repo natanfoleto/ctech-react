@@ -23,6 +23,7 @@
   --blue-500: #3838FC;
 
   --red-300: #d93030;
+  --red-500: #df1414;
 
   --linear-gradient: linear-gradient(62deg, var(--gray-700) 25%, var(--purple-500) 300%);
 }

@@ -24,21 +24,37 @@ function Events() {
   return (
     <DefaultLayout>
       <div className={styles.container}>
-        <div className={styles.competitions}>
-          <h2>Competições</h2>
+        <img
+          src="https://imagensemoldes.com.br/wp-content/uploads/2021/03/VS-PNG.png"
+          alt=""
+        />
 
-          <div>
-            {events?.map((event) => (
-              <div key={event.id}>
-                <strong>{event.name}</strong>
-                <p>{event.notes}</p>
-              </div>
-            ))}
-          </div>
+        <div className={styles.title}>
+          <h1>Eventos | Competições</h1>
+          <span>
+            Veja todas as competições que acontecerão dentro do evento. Você
+            pode ler as regras de cada uma, e se inscrever caso queira
+            participar, seja sozinho ou com sua equipe!
+          </span>
         </div>
 
-        <div className={styles.attractions}>
-          <h2>Atrações</h2>
+        <div className={styles.competitions}>
+          {events?.map((event) => (
+            <div key={event.id} className={styles.competition}>
+              <img src={event.banner_url} alt={event.name} />
+
+              <div>
+                <div className={styles.info}>
+                  <strong>{event.name}</strong>
+                  <p>{event.notes}</p>
+                </div>
+
+                <div className={styles.subscribe}>
+                  <button>Participar</button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </DefaultLayout>
