@@ -8,12 +8,14 @@ import Panel from "../pages/Panel";
 
 import Unauthorized from "../pages/Unauthorized";
 import NotFound from "../pages/NotFound";
+import { Quests } from "../pages/Quests";
 
 function AuthRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/events" element={<Events />} />
+      <Route path="/quests" element={<Quests />} />
       <Route path="/games" element={<Games />} />
       <Route path="/me/:username" element={<Profile />} />
       <Route path="/panel" element={<Panel />} />

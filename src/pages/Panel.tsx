@@ -10,11 +10,13 @@ import { PermissionGate } from "../components/PermissionGate";
 
 import styles from "./Panel.module.css";
 import { useState } from "react";
+import { TabQuest } from "../components/TabQuest";
 
 enum Pages {
   TabUser,
   TabGroup,
   TabEvent,
+  TabQuest,
   TabGame,
   TabPermission,
 }
@@ -35,6 +37,7 @@ function Panel() {
               "Usuários",
               "Grupos",
               "Eventos",
+              "Quests",
               "Sala de Jogos",
               "Permissões",
             ]}
@@ -44,6 +47,7 @@ function Panel() {
             {currentTab === Pages.TabUser && <TabUser />}
             {currentTab === Pages.TabGroup && <TabGroup />}
             {currentTab === Pages.TabEvent && <TabEvent />}
+            {currentTab === Pages.TabQuest && <TabQuest />}
             {currentTab === Pages.TabGame && <TabGame />}
             {currentTab === Pages.TabPermission && <TabPermission />}
           </Tabs>
